@@ -1,10 +1,13 @@
 from flask import Flask
+from flask_cors import CORS
 
 from src import config
 
 
 def create_app(test_config=None):
     app = Flask(config.APP_NAME, instance_relative_config=True)
+
+    CORS(app)
 
     if test_config:
         app.config.from_mapping(test_config)
