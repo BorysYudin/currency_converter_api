@@ -1,4 +1,4 @@
-from typing import Dict
+from typing import Dict, List
 
 import requests
 from requests import Response
@@ -19,7 +19,12 @@ class ExchangerateClient:
         return result["rates"]
 
     @classmethod
-    def _make_request(cls, path: str, params: Dict) -> Dict:
+    def symbols(cls) -> List:
+        result = cls._make_request("/symbols")
+        return list(result["symbols"].keys())
+
+    @classmethod
+    def _make_request(cls, path: str, params: Dict = None) -> Dict:
         url = build_url(config.EXCHANGERATE_BASE_URL, path, params)
         response = requests.get(url)
         return cls._parse_response(response)

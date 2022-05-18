@@ -27,3 +27,9 @@ def latest_rates():
         symbols=symbols,
     )
     return {"result": result}
+
+
+@blueprint.route('/symbols')
+def symbols():
+    result = ExchangerateClient.symbols()
+    return {"result": result}

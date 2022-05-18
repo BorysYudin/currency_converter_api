@@ -25,3 +25,4 @@ def register_converter_blueprint(app):
     app.register_blueprint(converter.blueprint)
     app.add_url_rule('/convert_currency', endpoint='convert_currency')
     app.add_url_rule('/latest_rates', endpoint='latest_rates')
+    app.add_url_rule('/symbols', endpoint='symbols')
